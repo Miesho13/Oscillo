@@ -15,6 +15,9 @@ function M.build()
     -- vim.api.nvim_buf_set_name(buf, signature)
     vim.bo[buf].filetype = "cpp"
 
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Building..." })
+    vim.cmd("redraw") 
+
     -- local output = vim.fn.system({ "cmake", "--build", "build" })
     local output = vim.fn.system({"./oscill_build"})
     local lines = vim.split(output, "\n", { trimempty = true })
