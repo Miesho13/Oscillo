@@ -1,5 +1,6 @@
 local command = {
     build = function() require("oscillo").build() end,
+    setup = function() require("oscillo").setup() end,
 }
 
 vim.api.nvim_create_user_command("Osci", function(opts)

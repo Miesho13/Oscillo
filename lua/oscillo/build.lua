@@ -2,7 +2,7 @@ local M = {}
 
 local signature = "__OSCILLO_BUILD_OUTPUT__"
 
-function M.run()
+function M.build()
 
     local origin_win = vim.api.nvim_get_current_win()
     local origin_buf = vim.api.nvim_get_current_buf()
@@ -15,7 +15,8 @@ function M.run()
     -- vim.api.nvim_buf_set_name(buf, signature)
     vim.bo[buf].filetype = "cpp"
 
-    local output = vim.fn.system({ "cmake", "--build", "build" })
+    -- local output = vim.fn.system({ "cmake", "--build", "build" })
+    local output = vim.fn.system({"./oscill_build"})
     local lines = vim.split(output, "\n", { trimempty = true })
 
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines);
