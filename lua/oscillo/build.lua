@@ -23,6 +23,7 @@ function M.build()
     local lines = vim.split(output, "\n", { trimempty = true })
 
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines);
+    vim.api.nvim_win_set_cursor(0, { vim.api.nvim_buf_line_count(buf), 0 })
 
     vim.api.nvim_set_hl(0, "MyErrorText",   { fg = "#ff5555", bg = "NONE", bold = true })
     vim.api.nvim_set_hl(0, "MyWarningText", { fg = "#ffaa00", bg = "NONE", bold = true })
